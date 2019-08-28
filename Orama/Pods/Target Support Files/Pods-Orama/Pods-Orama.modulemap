@@ -1,0 +1,6 @@
+framework module Pods_Orama {
+  umbrella header "Pods-Orama-umbrella.h"
+
+  export *
+  module * { export * }
+}
