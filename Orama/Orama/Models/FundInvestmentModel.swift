@@ -1,14 +1,7 @@
-//
-//  Model.swift
-//  Orama
-//
-//  Created by Gustavo Evangelista on 27/08/2019.
-//  Copyright © 2019 gustavo.cosenza. All rights reserved.
-//
 
 import Foundation
 
-struct Investment: Codable{
+struct FundInvestmentModel: Codable{
     let initialDate: String
     let performanceAudios: [PerformanceAudio]
     let descriptionSEO: String
@@ -22,7 +15,7 @@ struct Investment: Codable{
     let documents: [Document]
     let specification: Specification
     let isActive: Bool
-    let taxClassification: TaxClassification
+    let taxClassification: String
     let cnpj: String
     let welcomeDescription: Description
     let performanceVideos: [Video]
@@ -78,7 +71,7 @@ struct Benchmark: Codable {
 struct Document: Codable {
     let position: Int
     let documentType: String
-    let name: DocumentName
+    let name: String
     let documentURL: String
     
     enum CodingKeys: String, CodingKey {
@@ -87,40 +80,6 @@ struct Document: Codable {
         case name
         case documentURL = "document_url"
     }
-}
-
-enum DocumentName: String, Codable {
-    case apresentação = "Apresentação"
-    case apresentaçãoDoFundo = "Apresentação do Fundo"
-    case ataAssembléia = "Ata Assembléia"
-    case ataDaAssembleia = "Ata da Assembleia"
-    case ataDaAssembléia = "Ata da Assembléia"
-    case ataDeAssembleia = "Ata de Assembleia"
-    case cartaDoGestor = "Carta do Gestor"
-    case cartaMensal = "Carta Mensal"
-    case cartaTrimestral = "Carta Trimestral"
-    case comunicado = "Comunicado"
-    case consultaFormal = "Consulta Formal"
-    case convocação = "Convocação"
-    case convocaçãoDaAssembléia = "Convocação da Assembléia"
-    case convocaçãoDeAssembleia = "Convocação de Assembleia"
-    case convocaçãoDeAssembléia = "Convocação de Assembléia"
-    case ddf = "DDF"
-    case demonstrativoDeDesempenhoDoFundo = "Demonstrativo de Desempenho do Fundo"
-    case demonstraçãoDeDesempenho = "Demonstração de Desempenho"
-    case demonstraçãoDeDesempenhoDoFundo = "Demonstração de Desempenho do Fundo"
-    case demonstraçãoDeDesempenhoFinanceiro = "Demonstração de Desempenho Financeiro"
-    case demonstraçãoDeResultado = "Demonstração de Resultado"
-    case demonstraçõesDeDesempenhoFinanceiro = "Demonstrações de Desempenho Financeiro"
-    case fatoRelevante = "Fato Relevante"
-    case fomululárioDeInformaçõesComplementares = "Fomululário de Informações Complementares"
-    case formulárioDeInformaçõesComplementares = "Formulário de Informações Complementares"
-    case fromulárioDeInformaçõesComplementares = "Fromulário de Informações Complementares"
-    case lamina = "Lamina"
-    case lâmina = "Lâmina"
-    case materialDeDistribuição = "Material de Distribuição"
-    case nameFormulárioDeInformaçõesComplementares = "Formulário de informações Complementares"
-    case regulamento = "Regulamento"
 }
 
 // MARK: - Fees
@@ -156,23 +115,24 @@ struct FundManager: Codable {
 // MARK: - Operability
 struct Operability: Codable {
     let hasOperationsOnThursdays: Bool
-    let retrievalLiquidationDaysType, applicationQuotationDaysType: AtionDaysType
+    let retrievalLiquidationDaysType, applicationQuotationDaysType: String
     let retrievalQuotationDays: Int
-    let anticipatedRetrievalQuotationDaysStr: AnticipatedRetrievalQuotationDaysStr
-    let retrievalQuotationDaysType: AtionDaysType
+    let anticipatedRetrievalQuotationDaysStr: String
+    let retrievalQuotationDaysType: String
     let anticipatedRetrievalQuotationDays: Int
     let hasOperationsOnWednesdays: Bool
     let minimumBalancePermanence: String
     let hasOperationsOnTuesdays: Bool
-    let minimumInitialApplicationAmount, applicationTimeLimit: String
+    let minimumInitialApplicationAmount: String
+    let applicationTimeLimit: String
     let hasOperationsOnMondays: Bool
     let retrievalTimeLimit: String
     let hasOperationsOnFridays: Bool
     let retrievalSpecialType, applicationQuotationDaysStr, retrievalQuotationDaysStr: String
-    let retrievalLiquidationDaysStr: RetrievalLiquidationDaysStr
+    let retrievalLiquidationDaysStr: String
     let minimumSubsequentRetrievalAmount: String
     let retrievalLiquidationDays, applicationQuotationDays: Int
-    let anticipatedRetrievalQuotationDaysType: AtionDaysType
+    let anticipatedRetrievalQuotationDaysType: String
     let maximumInitialApplicationAmount, minimumSubsequentApplicationAmount: String
     
     enum CodingKeys: String, CodingKey {
@@ -202,43 +162,18 @@ struct Operability: Codable {
         case maximumInitialApplicationAmount = "maximum_initial_application_amount"
         case minimumSubsequentApplicationAmount = "minimum_subsequent_application_amount"
     }
-}
-
-enum AnticipatedRetrievalQuotationDaysStr: String, Codable {
-    case d0 = "D+0"
-    case d1 = "D+1"
-    case d10 = "D+10"
-    case d15 = "D+15"
-    case d15DiasÚteis = "D+15 (dias úteis)"
-    case d15Úteis = "D+15 (úteis)"
-    case d3 = "D+3"
-    case d3DiasÚteis = "D+3 (dias úteis)"
-    case d4 = "D+4"
-    case d5 = "D+5"
-    case d5DiasÚteis = "D+5 (dias úteis)"
-    case nãoHá = "Não há"
-}
-
-enum AtionDaysType: String, Codable {
-    case corridos = "corridos"
-    case úteis = "úteis"
-}
-
-enum RetrievalLiquidationDaysStr: String, Codable {
-    case d0 = "D+0"
-    case d0DaDataDeConversãoDeResgate = "D+0 da data de conversão de resgate"
-    case d1 = "D+1"
-    case d1DaDataDeConversãoDeResgate = "D+1 da data de conversão de resgate"
-    case d1DepoisDaConversão = "D+1 depois da conversão"
-    case d2 = "D+2"
-    case d2DiasÚteisDaDataDeConversãoDeResgate = "D+2 (dias úteis) da data de conversão de resgate"
-    case d3 = "D+3"
-    case d3ConsiderandoAsLocalidadesPresentesNoRegulamento = "D+3 (considerando as localidades presentes no regulamento)"
-    case d3DaDataDeConversãoDeResgate = "D+3 da data de conversão de resgate"
-    case d3DiasÚteisDaDataDeConversãoDeResgate = "D+3 (dias úteis) da data de conversão de resgate"
-    case d4 = "D+4"
-    case d4DiasÚteis = "D+4 (dias úteis)"
-    case d5 = "D+5"
+    
+    public func formatedMinimumInitialApplicationAmount() -> String? {
+        let value = minimumInitialApplicationAmount
+        let myInteger = Double(value)
+        
+        let price = NSNumber(value: myInteger!)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        formatter.locale = Locale(identifier: "pt_BR")
+        return formatter.string(from: price)
+    }
 }
 
 // MARK: - PerformanceAudio
@@ -285,7 +220,7 @@ struct Profitabilities: Codable {
 struct Specification: Codable {
     let fundSuitabilityProfile, fundRiskProfile: FundProfile
     let isQualified: Bool
-    let fundType: FundType
+    let fundType: String
     let fundClass: String
     let fundMacroStrategy, fundMainStrategy: FundMaStrategy
     
@@ -316,45 +251,12 @@ struct FundMaStrategy: Codable {
 // MARK: - FundProfile
 struct FundProfile: Codable {
     let scoreRangeOrder: Int
-    let name: FundRiskProfileName
+    let name: String
     
     enum CodingKeys: String, CodingKey {
         case scoreRangeOrder = "score_range_order"
         case name
     }
-}
-
-enum FundRiskProfileName: String, Codable {
-    case conservador = "Conservador"
-    case experiente = "Experiente"
-    case moderado = "Moderado"
-    case réguaDeRisco1 = "Régua de risco 1"
-    case réguaDeRisco10 = "Régua de risco 10"
-    case réguaDeRisco11 = "Régua de risco 11"
-    case réguaDeRisco12 = "Régua de risco 12"
-    case réguaDeRisco2 = "Régua de risco 2"
-    case réguaDeRisco3 = "Régua de risco 3"
-    case réguaDeRisco4 = "Régua de risco 4"
-    case réguaDeRisco5 = "Régua de risco 5"
-    case réguaDeRisco6 = "Régua de risco 6"
-    case réguaDeRisco7 = "Régua de risco 7"
-    case réguaDeRisco8 = "Régua de risco 8"
-    case réguaDeRisco9 = "Régua de risco 9"
-}
-
-enum FundType: String, Codable {
-    case ações = "Ações"
-    case cambial = "Cambial"
-    case direitoCreditório = "Direito Creditório"
-    case multimercado = "Multimercado"
-    case referenciado = "Referenciado"
-    case rendaFixa = "Renda Fixa"
-}
-
-enum TaxClassification: String, Codable {
-    case ações = "Ações"
-    case isento = "Isento"
-    case longoPrazo = "Longo prazo"
 }
 
 // MARK: - Description
