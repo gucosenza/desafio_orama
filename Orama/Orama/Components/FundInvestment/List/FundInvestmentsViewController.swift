@@ -2,7 +2,13 @@ import UIKit
 
 class FundInvestmentsViewController: UIViewController {
     
-    var funds: [FundInvestmentModel] = []
+    var funds = [FundInvestmentModel]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     let identifier = "identifier"
     
@@ -20,18 +26,30 @@ class FundInvestmentsViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Fundos"
         
+        
         navigationController!.navigationBar.isTranslucent = false
-        navigationController!.navigationBar.barTintColor = .green
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+
+        if #available(iOS 11.0, *) {
+            navigationController!.navigationBar.barTintColor = UIColor(named: "baseColor")
+            navigationController!.navigationBar.tintColor = .white
+        } else {
+            // Fallback on earlier versions
+        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(FundInvestmentCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
         setupView()
         
+//        OramaApi.loadInvestment { (fundsInvestment) in
+//            self.funds = fundsInvestment
+//        }
+        
         guard let path = Bundle.main.path(forResource: "investimentos", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path))
             else {return}
-        print(data)
+        
         funds = try! JSONDecoder().decode([FundInvestmentModel].self, from: data)
         
     }

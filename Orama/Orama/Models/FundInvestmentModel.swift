@@ -1,100 +1,35 @@
 
+//2.operability.minimum_initial_application_amount
+//3.specification.fund_risk_profile.name
+//3.strategy_video.thumbnail (se possuir!)
+//4.fund_manager.description
+
 import Foundation
 
 struct FundInvestmentModel: Codable{
     let initialDate: String
-    let performanceAudios: [PerformanceAudio]
-    let descriptionSEO: String
     let operability: Operability
     let fullName: String
-    let fees: Fees
-    let id: Int
-    let isClosed: Bool
     let simpleName: String
-    let targetFund: JSONNull?
-    let documents: [Document]
     let specification: Specification
-    let isActive: Bool
-    let taxClassification: String
-    let cnpj: String
-    let welcomeDescription: Description
-    let performanceVideos: [Video]
-    let quotaDate: String?
-    let benchmark: Benchmark
-    let oramaStandard: Bool
-    let slug: String
-    let volatility12M: String?
     let strategyVideo: Video?
-    let profitabilities: Profitabilities
-    let closedToCaptureExplanation: String
-    let netPatrimony12M: String?
-    let isClosedToCapture: Bool
     let fundManager: FundManager
     
     enum CodingKeys: String, CodingKey {
         case initialDate = "initial_date"
-        case performanceAudios = "performance_audios"
-        case descriptionSEO = "description_seo"
         case operability
         case fullName = "full_name"
-        case fees, id
-        case isClosed = "is_closed"
         case simpleName = "simple_name"
-        case targetFund = "target_fund"
-        case documents, specification
-        case isActive = "is_active"
-        case taxClassification = "tax_classification"
-        case cnpj
-        case welcomeDescription = "description"
-        case performanceVideos = "performance_videos"
-        case quotaDate = "quota_date"
-        case benchmark
-        case oramaStandard = "orama_standard"
-        case slug
-        case volatility12M = "volatility_12m"
+        case specification
         case strategyVideo = "strategy_video"
-        case profitabilities
-        case closedToCaptureExplanation = "closed_to_capture_explanation"
-        case netPatrimony12M = "net_patrimony_12m"
-        case isClosedToCapture = "is_closed_to_capture"
         case fundManager = "fund_manager"
     }
-}
-
-// MARK: - Benchmark
-struct Benchmark: Codable {
-    let id: Int
-    let name: String
-}
-
-// MARK: - Document
-struct Document: Codable {
-    let position: Int
-    let documentType: String
-    let name: String
-    let documentURL: String
     
-    enum CodingKeys: String, CodingKey {
-        case position
-        case documentType = "document_type"
-        case name
-        case documentURL = "document_url"
-    }
-}
-
-// MARK: - Fees
-struct Fees: Codable {
-    let maximumAdministrationFee, anticipatedRetrievalFeeValue, administrationFee, anticipatedRetrievalFee: String
-    let performanceFee: String
-    let hasAnticipatedRetrieval: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case maximumAdministrationFee = "maximum_administration_fee"
-        case anticipatedRetrievalFeeValue = "anticipated_retrieval_fee_value"
-        case administrationFee = "administration_fee"
-        case anticipatedRetrievalFee = "anticipated_retrieval_fee"
-        case performanceFee = "performance_fee"
-        case hasAnticipatedRetrieval = "has_anticipated_retrieval"
+    public func formattedInitialDate() -> String? {
+        let date = initialDate
+        var dateSplited = date.components(separatedBy: "-")
+        let dateFormatted = "Data inicial: \(dateSplited[2])/\(dateSplited[1])/\(dateSplited[0])"
+        return dateFormatted
     }
 }
 
@@ -163,7 +98,7 @@ struct Operability: Codable {
         case minimumSubsequentApplicationAmount = "minimum_subsequent_application_amount"
     }
     
-    public func formatedMinimumInitialApplicationAmount() -> String? {
+    public func formattedMinimumInitialApplicationAmount() -> String? {
         let value = minimumInitialApplicationAmount
         let myInteger = Double(value)
         
@@ -173,21 +108,6 @@ struct Operability: Codable {
         
         formatter.locale = Locale(identifier: "pt_BR")
         return formatter.string(from: price)
-    }
-}
-
-// MARK: - PerformanceAudio
-struct PerformanceAudio: Codable {
-    let referenceDate, soundcloudID: String
-    let permalinkURL: String
-    let id: Int
-    let title: String
-    
-    enum CodingKeys: String, CodingKey {
-        case referenceDate = "reference_date"
-        case soundcloudID = "soundcloud_id"
-        case permalinkURL = "permalink_url"
-        case id, title
     }
 }
 
@@ -208,12 +128,13 @@ struct Video: Codable {
         case youtubeID = "youtube_id"
         case thumbnail
     }
-}
-
-// MARK: - Profitabilities
-struct Profitabilities: Codable {
-    let m60, m48, m24, m36: String?
-    let month, m12, year, day: String?
+    
+    public func thumbnailFormatted() -> String? {
+        let str = thumbnail
+        var strSplited = str?.components(separatedBy: ":")
+        let strFormatted = "\(strSplited![0])s:\(strSplited![1])"
+        return strFormatted
+    }
 }
 
 // MARK: - Specification
@@ -270,32 +191,5 @@ struct Description: Codable {
         case movieURL = "movie_url"
         case targetAudience = "target_audience"
         case strengths, strategy
-    }
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-    
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-    
-    public var hashValue: Int {
-        return 0
-    }
-    
-    public init() {}
-    
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
     }
 }

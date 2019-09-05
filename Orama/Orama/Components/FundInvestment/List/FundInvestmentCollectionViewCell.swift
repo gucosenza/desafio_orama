@@ -2,18 +2,15 @@ import UIKit
 
 class FundInvestmentCollectionViewCell: UICollectionViewCell {
     
-    private lazy var descriptionView: UIView = {
+    private lazy var lineView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.accessibilityIdentifier = "searchCollectionViewCellLineLabel"
         return view
     }()
     
     private let stackViewSimpleName: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
-        stackView.spacing = 8
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +30,6 @@ class FundInvestmentCollectionViewCell: UICollectionViewCell {
     private let stackViewAplication: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
-//        stackView.spacing = 8
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,64 +79,64 @@ class FundInvestmentCollectionViewCell: UICollectionViewCell {
     
     func setup (fundInvestment: FundInvestmentModel){
         simpleName.text = fundInvestment.simpleName
-        minimumInitialApplicationAmount.text = fundInvestment.operability.formatedMinimumInitialApplicationAmount()
+        minimumInitialApplicationAmount.text = fundInvestment.operability.formattedMinimumInitialApplicationAmount()
         fundRiskProfileName.text = fundInvestment.specification.fundRiskProfile.name
     }
 }
 
 extension FundInvestmentCollectionViewCell: CodeView{
     func buildViewHierarchy() {
-        contentView.addSubview(descriptionView)
-        descriptionView.addSubview(stackViewSimpleName)
+        contentView.addSubview(stackViewSimpleName)
         stackViewSimpleName.addArrangedSubview(simpleName)
-        descriptionView.addSubview(stackViewAplication)
+        contentView.addSubview(stackViewAplication)
         stackViewAplication.addArrangedSubview(fundRiskProfileName)
         stackViewAplication.addArrangedSubview(minimunAplication)
         stackViewAplication.addArrangedSubview(minimumInitialApplicationAmount)
-        
+        contentView.addSubview(lineView)
     }
     
     func setupConstraints() {
         if #available(iOS 11.0, *) {
-            descriptionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-            descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-            descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-            descriptionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-            descriptionView.layer.cornerRadius = 16
-            descriptionView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+            lineView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+            lineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+            lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+            lineView.widthAnchor.constraint(equalToConstant: 10).isActive = true
+            lineView.layer.cornerRadius = 10
+            lineView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+            lineView.backgroundColor = UIColor(named: "baseColor")
             
             stackViewSimpleName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
             stackViewSimpleName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
             stackViewSimpleName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
-            stackViewSimpleName.widthAnchor.constraint(equalToConstant: contentView.bounds.width/2).isActive = true
+            stackViewSimpleName.widthAnchor.constraint(equalToConstant: (contentView.bounds.width-10)/2).isActive = true
             
-            simpleName.trailingAnchor.constraint(equalTo: stackViewSimpleName.trailingAnchor, constant: -10).isActive = true
-            simpleName.leadingAnchor.constraint(equalTo: stackViewSimpleName.leadingAnchor, constant: 5).isActive = true
+            simpleName.trailingAnchor.constraint(equalTo: stackViewSimpleName.trailingAnchor, constant: 0).isActive = true
+            simpleName.leadingAnchor.constraint(equalTo: stackViewSimpleName.leadingAnchor, constant: 0).isActive = true
+            simpleName.centerYAnchor.constraint(equalTo: stackViewSimpleName.centerYAnchor).isActive = true
             
             stackViewAplication.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-            stackViewAplication.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
+            stackViewAplication.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
             stackViewAplication.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
-            stackViewAplication.leadingAnchor.constraint(equalTo: stackViewSimpleName.trailingAnchor, constant: 0).isActive = true
-            
+            stackViewAplication.widthAnchor.constraint(equalToConstant: (contentView.bounds.width-10)/2).isActive = true
+
             minimunAplication.centerYAnchor.constraint(equalTo: stackViewAplication.centerYAnchor).isActive = true
             minimunAplication.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
             minimunAplication.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
-            
-            fundRiskProfileName.bottomAnchor.constraint(equalTo: minimunAplication.topAnchor, constant: 5).isActive = true
-            minimunAplication.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
-            minimunAplication.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
-            
-            minimumInitialApplicationAmount.topAnchor.constraint(equalTo: minimunAplication.bottomAnchor, constant: 5).isActive = true
-            minimunAplication.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
-            minimunAplication.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
-            
+
+            fundRiskProfileName.bottomAnchor.constraint(equalTo: minimunAplication.topAnchor, constant: 0).isActive = true
+            fundRiskProfileName.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
+            fundRiskProfileName.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
+
+            minimumInitialApplicationAmount.topAnchor.constraint(equalTo: minimunAplication.bottomAnchor, constant: 0).isActive = true
+            minimumInitialApplicationAmount.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
+            minimumInitialApplicationAmount.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
         } else {
             // Fallback on earlier versions
         }
     }
     
     public func setupAdditionalConfiguration() {
-        contentView.backgroundColor = .blue
+        contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 16
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOpacity = 0.15
@@ -148,14 +144,4 @@ extension FundInvestmentCollectionViewCell: CodeView{
         contentView.layer.shadowRadius = 7
     }
     
-}
-
-
-extension UIView {
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
 }

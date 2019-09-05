@@ -13,12 +13,17 @@
 		7F2EE79523177244007374A6 /* FundInvestmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2EE79423177244007374A6 /* FundInvestmentCollectionViewCell.swift */; };
 		7F2EE79E23187CF8007374A6 /* FundInvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2EE79D23187CF8007374A6 /* FundInvestmentModel.swift */; };
 		7F2EE7A0231A1F9E007374A6 /* InvestmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2EE79F231A1F9E007374A6 /* InvestmentDetailViewController.swift */; };
+		7F2EE7A4231B9387007374A6 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2EE7A3231B9386007374A6 /* ImageManager.swift */; };
 		7F949B2E2314C58E002F0288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F949B2D2314C58E002F0288 /* AppDelegate.swift */; };
-		7F949B362314C58E002F0288 /* Orama.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F949B342314C58E002F0288 /* Orama.xcdatamodeld */; };
 		7F949B382314C58F002F0288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F949B372314C58F002F0288 /* Assets.xcassets */; };
 		7F949B3B2314C58F002F0288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F949B392314C58F002F0288 /* LaunchScreen.storyboard */; };
 		7F949B462314C58F002F0288 /* OramaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F949B452314C58F002F0288 /* OramaTests.swift */; };
 		7F949B512314C58F002F0288 /* OramaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F949B502314C58F002F0288 /* OramaUITests.swift */; };
+		7F9E9042231D6E3400D7F30F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E9041231D6E3400D7F30F /* UserDefaultsManager.swift */; };
+		7F9E9046231F469400D7F30F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E9045231F469400D7F30F /* HistoryView.swift */; };
+		7F9E9048231F472300D7F30F /* HistoryTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E9047231F472300D7F30F /* HistoryTableDataSource.swift */; };
+		7F9E904A231F48A300D7F30F /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E9049231F48A300D7F30F /* HistoryTableViewCell.swift */; };
+		7F9E904F2320BFAF00D7F30F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E904E2320BFAE00D7F30F /* Config.swift */; };
 		7FEC174B2316FCDA00BEB663 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC174A2316FCDA00BEB663 /* TabBarViewController.swift */; };
 		7FEC174D2317018D00BEB663 /* FundInvestmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC174C2317018D00BEB663 /* FundInvestmentsViewController.swift */; };
 		7FEC174F231701A000BEB663 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC174E231701A000BEB663 /* HistoryViewController.swift */; };
@@ -46,15 +51,15 @@
 
 /* Begin PBXFileReference section */
 		3400E7EF19EE59216E1EDF77 /* Pods-OramaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OramaUITests.debug.xcconfig"; path = "Target Support Files/Pods-OramaUITests/Pods-OramaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		3961DB1E23161F88007D65A1 /* OramaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OramaApi.swift; sourceTree = "<group>"; };
+		3961DB1E23161F88007D65A1 /* OramaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OramaApi.swift; path = ../OramaApi.swift; sourceTree = "<group>"; };
 		410A4E0040ACB13B3E848C63 /* Pods_Orama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A925EEC5359216E890557BE /* Pods-Orama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orama.release.xcconfig"; path = "Target Support Files/Pods-Orama/Pods-Orama.release.xcconfig"; sourceTree = "<group>"; };
 		7F2EE79423177244007374A6 /* FundInvestmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundInvestmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		7F2EE79D23187CF8007374A6 /* FundInvestmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundInvestmentModel.swift; sourceTree = "<group>"; };
 		7F2EE79F231A1F9E007374A6 /* InvestmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentDetailViewController.swift; sourceTree = "<group>"; };
+		7F2EE7A3231B9386007374A6 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		7F949B2A2314C58E002F0288 /* Orama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F949B2D2314C58E002F0288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7F949B352314C58E002F0288 /* Orama.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Orama.xcdatamodel; sourceTree = "<group>"; };
 		7F949B372314C58F002F0288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F949B3A2314C58F002F0288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F949B3C2314C58F002F0288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +69,11 @@
 		7F949B4C2314C58F002F0288 /* OramaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OramaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F949B502314C58F002F0288 /* OramaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OramaUITests.swift; sourceTree = "<group>"; };
 		7F949B522314C58F002F0288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F9E9041231D6E3400D7F30F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		7F9E9045231F469400D7F30F /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		7F9E9047231F472300D7F30F /* HistoryTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableDataSource.swift; sourceTree = "<group>"; };
+		7F9E9049231F48A300D7F30F /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		7F9E904E2320BFAE00D7F30F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		7FEC174A2316FCDA00BEB663 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		7FEC174C2317018D00BEB663 /* FundInvestmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundInvestmentsViewController.swift; sourceTree = "<group>"; };
 		7FEC174E231701A000BEB663 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 		7F2EE791231762DC007374A6 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				7F9E904E2320BFAE00D7F30F /* Config.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -123,9 +134,8 @@
 		7F2EE7962318761B007374A6 /* FundInvestment */ = {
 			isa = PBXGroup;
 			children = (
-				7F2EE79423177244007374A6 /* FundInvestmentCollectionViewCell.swift */,
-				7FEC174C2317018D00BEB663 /* FundInvestmentsViewController.swift */,
-				7F2EE79F231A1F9E007374A6 /* InvestmentDetailViewController.swift */,
+				7F2EE7A6231CA8E5007374A6 /* Details */,
+				7F2EE7A5231CA8D8007374A6 /* List */,
 			);
 			path = FundInvestment;
 			sourceTree = "<group>";
@@ -168,6 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				7FEC174E231701A000BEB663 /* HistoryViewController.swift */,
+				7F9E9045231F469400D7F30F /* HistoryView.swift */,
+				7F9E9047231F472300D7F30F /* HistoryTableDataSource.swift */,
+				7F9E9049231F48A300D7F30F /* HistoryTableViewCell.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -178,6 +191,33 @@
 				7FEC17502317049600BEB663 /* CodeView.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7F2EE7A2231B935E007374A6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7F2EE7A3231B9386007374A6 /* ImageManager.swift */,
+				7F9E9041231D6E3400D7F30F /* UserDefaultsManager.swift */,
+				3961DB1E23161F88007D65A1 /* OramaApi.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7F2EE7A5231CA8D8007374A6 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				7F2EE79423177244007374A6 /* FundInvestmentCollectionViewCell.swift */,
+				7FEC174C2317018D00BEB663 /* FundInvestmentsViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		7F2EE7A6231CA8E5007374A6 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				7F2EE79F231A1F9E007374A6 /* InvestmentDetailViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		7F949B212314C58E002F0288 = {
@@ -205,6 +245,7 @@
 		7F949B2C2314C58E002F0288 /* Orama */ = {
 			isa = PBXGroup;
 			children = (
+				7F2EE7A2231B935E007374A6 /* Common */,
 				7F2EE79C2318780A007374A6 /* Protocols */,
 				7F2EE79A231876E6007374A6 /* Components */,
 				7F2EE799231876C8007374A6 /* Resources */,
@@ -213,8 +254,6 @@
 				7F2EE791231762DC007374A6 /* Config */,
 				7F949B392314C58F002F0288 /* LaunchScreen.storyboard */,
 				7F949B3C2314C58F002F0288 /* Info.plist */,
-				7F949B342314C58E002F0288 /* Orama.xcdatamodeld */,
-				3961DB1E23161F88007D65A1 /* OramaApi.swift */,
 				7FEC17522317259C00BEB663 /* investimentos.json */,
 			);
 			path = Orama;
@@ -483,14 +522,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FEC174D2317018D00BEB663 /* FundInvestmentsViewController.swift in Sources */,
-				7F949B362314C58E002F0288 /* Orama.xcdatamodeld in Sources */,
 				7F949B2E2314C58E002F0288 /* AppDelegate.swift in Sources */,
+				7F9E904F2320BFAF00D7F30F /* Config.swift in Sources */,
+				7F9E9042231D6E3400D7F30F /* UserDefaultsManager.swift in Sources */,
+				7F9E9046231F469400D7F30F /* HistoryView.swift in Sources */,
 				7FEC174B2316FCDA00BEB663 /* TabBarViewController.swift in Sources */,
+				7F9E9048231F472300D7F30F /* HistoryTableDataSource.swift in Sources */,
 				3961DB1F23161F88007D65A1 /* OramaApi.swift in Sources */,
 				7FEC174F231701A000BEB663 /* HistoryViewController.swift in Sources */,
+				7F9E904A231F48A300D7F30F /* HistoryTableViewCell.swift in Sources */,
 				7F2EE79523177244007374A6 /* FundInvestmentCollectionViewCell.swift in Sources */,
 				7FEC17512317049600BEB663 /* CodeView.swift in Sources */,
 				7F2EE7A0231A1F9E007374A6 /* InvestmentDetailViewController.swift in Sources */,
+				7F2EE7A4231B9387007374A6 /* ImageManager.swift in Sources */,
 				7F2EE79E23187CF8007374A6 /* FundInvestmentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,19 +858,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7F949B342314C58E002F0288 /* Orama.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7F949B352314C58E002F0288 /* Orama.xcdatamodel */,
-			);
-			currentVersion = 7F949B352314C58E002F0288 /* Orama.xcdatamodel */;
-			path = Orama.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 7F949B222314C58E002F0288 /* Project object */;
 }

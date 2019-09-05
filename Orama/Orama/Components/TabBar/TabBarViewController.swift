@@ -5,9 +5,13 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tabBar.isTranslucent = false
-//        tabBar.tintColor = .black
-//        tabBar.barTintColor = UIColor(named: "Color1")
+        tabBar.isTranslucent = false
+        tabBar.tintColor = .white
+        if #available(iOS 11.0, *) {
+            tabBar.barTintColor = UIColor(named: "baseColor")
+        } else {
+            // Fallback on earlier versions
+        }
         
         let investmentViewController = FundInvestmentsViewController()
         investmentViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
