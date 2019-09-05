@@ -26,7 +26,6 @@ class FundInvestmentsViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Fundos"
         
-        
         navigationController!.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
@@ -42,15 +41,18 @@ class FundInvestmentsViewController: UIViewController {
         collectionView.register(FundInvestmentCollectionViewCell.self, forCellWithReuseIdentifier: identifier)
         setupView()
         
-//        OramaApi.loadInvestment { (fundsInvestment) in
-//            self.funds = fundsInvestment
-//        }
+        let sv = FundInvestmentsViewController.displaySpinner(onView: view)
+        OramaApi.loadInvestment { (fundsInvestment) in
+            self.funds = fundsInvestment
+            FundInvestmentsViewController.removeSpinner(spinner: sv)
+        }
         
-        guard let path = Bundle.main.path(forResource: "investimentos", ofType: "json"),
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path))
-            else {return}
         
-        funds = try! JSONDecoder().decode([FundInvestmentModel].self, from: data)
+//        guard let path = Bundle.main.path(forResource: "investimentos", ofType: "json"),
+//            let data = try? Data(contentsOf: URL(fileURLWithPath: path))
+//            else {return}
+//
+//        funds = try! JSONDecoder().decode([FundInvestmentModel].self, from: data)
         
     }
 }
@@ -115,4 +117,28 @@ extension FundInvestmentsViewController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: self.view.bounds.width-40, height: 150)
     }
     
+}
+
+
+extension FundInvestmentsViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
 }

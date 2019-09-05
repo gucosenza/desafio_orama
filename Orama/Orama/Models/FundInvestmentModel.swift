@@ -1,5 +1,9 @@
 import Foundation
 
+//struct Dados: Codable {
+//    let data: [FundInvestmentModel]
+//}
+
 struct FundInvestmentModel: Codable{
     let initialDate: String
     let operability: Operability
