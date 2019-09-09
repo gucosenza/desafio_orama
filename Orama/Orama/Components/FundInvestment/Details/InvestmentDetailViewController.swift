@@ -63,6 +63,7 @@ class InvestmentDetailViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.layer.cornerRadius = 16
+        button.backgroundColor = UIColor.oramaGreen
         return button
     }()
     
@@ -118,43 +119,40 @@ extension InvestmentDetailViewController: CodeView {
     
     func setupConstraints() {
         
-        if #available(iOS 11.0, *) {
-            self.descriptionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
-            self.descriptionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-            self.descriptionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-            self.descriptionView.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -15).isActive = true
+        NSLayoutConstraint.activate([
+            self.descriptionView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant: 15),
+            self.descriptionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
+            self.descriptionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            self.descriptionView.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -15),
             
-            fullName.topAnchor.constraint(equalTo: self.descriptionView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-            fullName.leadingAnchor.constraint(equalTo: self.descriptionView.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-            fullName.trailingAnchor.constraint(equalTo: self.descriptionView.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
-
-            thumbnail.topAnchor.constraint(equalTo: fullName.bottomAnchor, constant: 10).isActive = true
-            thumbnail.leadingAnchor.constraint(equalTo: fullName.leadingAnchor).isActive = true
-            thumbnail.trailingAnchor.constraint(equalTo: fullName.trailingAnchor).isActive = true
-
-            initialDate.topAnchor.constraint(equalTo: thumbnail.bottomAnchor, constant: 10).isActive = true
-            initialDate.leadingAnchor.constraint(equalTo: fullName.leadingAnchor).isActive = true
-            initialDate.trailingAnchor.constraint(equalTo: fullName.trailingAnchor).isActive = true
-
-            descriptionText.topAnchor.constraint(equalTo: initialDate.bottomAnchor, constant: 10).isActive = true
-            descriptionText.leadingAnchor.constraint(equalTo: fullName.leadingAnchor).isActive = true
-            descriptionText.trailingAnchor.constraint(equalTo: fullName.trailingAnchor).isActive = true
-            descriptionText.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -10).isActive = true
+            fullName.topAnchor.constraint(equalTo: self.descriptionView.topAnchor, constant: 10),
+            fullName.leadingAnchor.constraint(equalTo: self.descriptionView.leadingAnchor, constant: 10),
+            fullName.trailingAnchor.constraint(equalTo: self.descriptionView.trailingAnchor, constant: -10),
             
-            buyButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
-            buyButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-            buyButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
-            buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            buyButton.backgroundColor = UIColor(named: "baseColor")
-        } else {
-            // Fallback on earlier versions
-        }
+            thumbnail.topAnchor.constraint(equalTo: fullName.bottomAnchor, constant: 10),
+            thumbnail.leadingAnchor.constraint(equalTo: fullName.leadingAnchor),
+            thumbnail.trailingAnchor.constraint(equalTo: fullName.trailingAnchor),
+            
+            initialDate.topAnchor.constraint(equalTo: thumbnail.bottomAnchor, constant: 10),
+            initialDate.leadingAnchor.constraint(equalTo: fullName.leadingAnchor),
+            initialDate.trailingAnchor.constraint(equalTo: fullName.trailingAnchor),
+            
+            descriptionText.topAnchor.constraint(equalTo: initialDate.bottomAnchor, constant: 10),
+            descriptionText.leadingAnchor.constraint(equalTo: fullName.leadingAnchor),
+            descriptionText.trailingAnchor.constraint(equalTo: fullName.trailingAnchor),
+            descriptionText.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -10),
+            
+            buyButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: -10),
+            buyButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            buyButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            buyButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
         
     }
     
     public func setupAdditionalConfiguration() {
         self.title = "Investimento"
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor.oramaWhite
     }
 
 }

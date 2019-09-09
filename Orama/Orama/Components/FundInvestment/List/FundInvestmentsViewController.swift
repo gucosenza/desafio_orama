@@ -28,14 +28,9 @@ class FundInvestmentsViewController: UIViewController {
         
         navigationController!.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController!.navigationBar.barTintColor = UIColor.oramaGreen
+        navigationController!.navigationBar.tintColor = UIColor.oramaWhite
 
-        if #available(iOS 11.0, *) {
-            navigationController!.navigationBar.barTintColor = UIColor(named: "baseColor")
-            navigationController!.navigationBar.tintColor = .white
-        } else {
-            // Fallback on earlier versions
-        }
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(FundInvestmentCollectionViewCell.self, forCellWithReuseIdentifier: identifier)

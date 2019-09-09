@@ -14,12 +14,8 @@ class HistoryViewController: UIViewController {
         
         navigationController!.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        if #available(iOS 11.0, *) {
-            navigationController!.navigationBar.barTintColor = UIColor(named: "baseColor")
-            navigationController!.navigationBar.tintColor = .white
-        } else {
-            // Fallback on earlier versions
-        }
+        navigationController!.navigationBar.barTintColor = UIColor.oramaGreen
+        navigationController!.navigationBar.tintColor = UIColor.oramaWhite
         
         historyView.tableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableDataSource.identifier)
         loadHistory()

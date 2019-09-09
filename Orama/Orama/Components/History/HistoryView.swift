@@ -34,7 +34,12 @@ extension HistoryView: CodeView {
                 tableView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
                 ])
         } else {
-            
+            NSLayoutConstraint.activate([
+                tableView.topAnchor.constraint(equalTo: topAnchor),
+                tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+                tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
+                ])
         }
     }
 }

@@ -5,6 +5,8 @@ class FundInvestmentCollectionViewCell: UICollectionViewCell {
     private lazy var lineView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.backgroundColor = UIColor.oramaGreen
         return view
     }()
     
@@ -96,47 +98,51 @@ extension FundInvestmentCollectionViewCell: CodeView{
     }
     
     func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
+            lineView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            lineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            lineView.widthAnchor.constraint(equalToConstant: 10),
+            //                lineView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner],
+            
+            stackViewSimpleName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            stackViewSimpleName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            stackViewSimpleName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5),
+            stackViewSimpleName.widthAnchor.constraint(equalToConstant: (contentView.bounds.width-10)/2),
+            
+            simpleName.trailingAnchor.constraint(equalTo: stackViewSimpleName.trailingAnchor, constant: 0),
+            simpleName.leadingAnchor.constraint(equalTo: stackViewSimpleName.leadingAnchor, constant: 0),
+            simpleName.centerYAnchor.constraint(equalTo: stackViewSimpleName.centerYAnchor),
+            
+            stackViewAplication.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            stackViewAplication.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            stackViewAplication.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5),
+            stackViewAplication.widthAnchor.constraint(equalToConstant: (contentView.bounds.width-10)/2),
+            
+            minimunAplication.centerYAnchor.constraint(equalTo: stackViewAplication.centerYAnchor),
+            minimunAplication.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0),
+            minimunAplication.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0),
+            
+            fundRiskProfileName.bottomAnchor.constraint(equalTo: minimunAplication.topAnchor, constant: 0),
+            fundRiskProfileName.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0),
+            fundRiskProfileName.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0),
+            
+            minimumInitialApplicationAmount.topAnchor.constraint(equalTo: minimunAplication.bottomAnchor, constant: 0),
+            minimumInitialApplicationAmount.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0),
+            minimumInitialApplicationAmount.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0)
+            ])
+        
         if #available(iOS 11.0, *) {
-            lineView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-            lineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-            lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-            lineView.widthAnchor.constraint(equalToConstant: 10).isActive = true
-            lineView.layer.cornerRadius = 10
             lineView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-            lineView.backgroundColor = UIColor(named: "baseColor")
             
-            stackViewSimpleName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-            stackViewSimpleName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-            stackViewSimpleName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
-            stackViewSimpleName.widthAnchor.constraint(equalToConstant: (contentView.bounds.width-10)/2).isActive = true
-            
-            simpleName.trailingAnchor.constraint(equalTo: stackViewSimpleName.trailingAnchor, constant: 0).isActive = true
-            simpleName.leadingAnchor.constraint(equalTo: stackViewSimpleName.leadingAnchor, constant: 0).isActive = true
-            simpleName.centerYAnchor.constraint(equalTo: stackViewSimpleName.centerYAnchor).isActive = true
-            
-            stackViewAplication.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-            stackViewAplication.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-            stackViewAplication.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
-            stackViewAplication.widthAnchor.constraint(equalToConstant: (contentView.bounds.width-10)/2).isActive = true
-
-            minimunAplication.centerYAnchor.constraint(equalTo: stackViewAplication.centerYAnchor).isActive = true
-            minimunAplication.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
-            minimunAplication.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
-
-            fundRiskProfileName.bottomAnchor.constraint(equalTo: minimunAplication.topAnchor, constant: 0).isActive = true
-            fundRiskProfileName.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
-            fundRiskProfileName.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
-
-            minimumInitialApplicationAmount.topAnchor.constraint(equalTo: minimunAplication.bottomAnchor, constant: 0).isActive = true
-            minimumInitialApplicationAmount.leadingAnchor.constraint(equalTo: stackViewAplication.leadingAnchor, constant: 0).isActive = true
-            minimumInitialApplicationAmount.trailingAnchor.constraint(equalTo: stackViewAplication.trailingAnchor, constant: 0).isActive = true
         } else {
-            // Fallback on earlier versions
+           
         }
     }
     
     public func setupAdditionalConfiguration() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor.oramaWhite
         contentView.layer.cornerRadius = 16
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOpacity = 0.15

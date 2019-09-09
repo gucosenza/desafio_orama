@@ -24,6 +24,7 @@
 		7F9E9048231F472300D7F30F /* HistoryTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E9047231F472300D7F30F /* HistoryTableDataSource.swift */; };
 		7F9E904A231F48A300D7F30F /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E9049231F48A300D7F30F /* HistoryTableViewCell.swift */; };
 		7F9E904F2320BFAF00D7F30F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E904E2320BFAE00D7F30F /* Config.swift */; };
+		7FCBFF2123269B710074CFAA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCBFF2023269B710074CFAA /* Color.swift */; };
 		7FEC174B2316FCDA00BEB663 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC174A2316FCDA00BEB663 /* TabBarViewController.swift */; };
 		7FEC174D2317018D00BEB663 /* FundInvestmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC174C2317018D00BEB663 /* FundInvestmentsViewController.swift */; };
 		7FEC174F231701A000BEB663 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC174E231701A000BEB663 /* HistoryViewController.swift */; };
@@ -74,6 +75,7 @@
 		7F9E9047231F472300D7F30F /* HistoryTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableDataSource.swift; sourceTree = "<group>"; };
 		7F9E9049231F48A300D7F30F /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		7F9E904E2320BFAE00D7F30F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		7FCBFF2023269B710074CFAA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../Common/Color.swift; sourceTree = "<group>"; };
 		7FEC174A2316FCDA00BEB663 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		7FEC174C2317018D00BEB663 /* FundInvestmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundInvestmentsViewController.swift; sourceTree = "<group>"; };
 		7FEC174E231701A000BEB663 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		7F2EE791231762DC007374A6 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				7FCBFF2023269B710074CFAA /* Color.swift */,
 				7F9E904E2320BFAE00D7F30F /* Config.swift */,
 			);
 			path = Config;
@@ -526,6 +529,7 @@
 				7F9E904F2320BFAF00D7F30F /* Config.swift in Sources */,
 				7F9E9042231D6E3400D7F30F /* UserDefaultsManager.swift in Sources */,
 				7F9E9046231F469400D7F30F /* HistoryView.swift in Sources */,
+				7FCBFF2123269B710074CFAA /* Color.swift in Sources */,
 				7FEC174B2316FCDA00BEB663 /* TabBarViewController.swift in Sources */,
 				7F9E9048231F472300D7F30F /* HistoryTableDataSource.swift in Sources */,
 				3961DB1F23161F88007D65A1 /* OramaApi.swift in Sources */,
@@ -704,6 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7NABPBV934;
 				INFOPLIST_FILE = Orama/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -723,6 +728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7NABPBV934;
 				INFOPLIST_FILE = Orama/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

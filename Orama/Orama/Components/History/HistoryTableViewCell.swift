@@ -6,6 +6,11 @@ class HistoryTableViewCell: UITableViewCell {
         let view = UIView(frame: .zero)
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 16
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.15
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 7
         return view
     }()
     
@@ -15,6 +20,7 @@ class HistoryTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.font = UIFont(name: "System", size: 16)
         label.numberOfLines = 3
+        label.textColor = UIColor.oramaGreen
         return label
     }()
     
@@ -33,26 +39,18 @@ extension HistoryTableViewCell: CodeView {
     }
     
     func setupConstraints() {
-        if #available(iOS 11.0, *) {
-            viewCell.layer.cornerRadius = 16
-            viewCell.layer.shadowColor = UIColor.black.cgColor
-            viewCell.layer.shadowOpacity = 0.15
-            viewCell.layer.shadowOffset = .zero
-            viewCell.layer.shadowRadius = 7
-            viewCell.heightAnchor.constraint(equalToConstant: 76).isActive = true
-            viewCell.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-            viewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-            viewCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
-            viewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        NSLayoutConstraint.activate([
+            viewCell.heightAnchor.constraint(equalToConstant: 76),
+            viewCell.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            viewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            viewCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            viewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            fundInvestment.textColor = UIColor(named: "baseColor")
-            fundInvestment.leadingAnchor.constraint(equalTo: viewCell.leadingAnchor, constant: 0).isActive = true
-            fundInvestment.trailingAnchor.constraint(equalTo: viewCell.trailingAnchor, constant: 0).isActive = true
-            fundInvestment.centerYAnchor.constraint(equalTo: viewCell.centerYAnchor).isActive = true
-    
-        } else {
-            // Fallback on earlier versions
-        }
+            fundInvestment.leadingAnchor.constraint(equalTo: viewCell.leadingAnchor, constant: 0),
+            fundInvestment.trailingAnchor.constraint(equalTo: viewCell.trailingAnchor, constant: 0),
+            fundInvestment.centerYAnchor.constraint(equalTo: viewCell.centerYAnchor)
+        ])
+        
     }
     
     

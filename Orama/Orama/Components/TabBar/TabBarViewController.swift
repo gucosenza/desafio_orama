@@ -6,12 +6,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.isTranslucent = false
-        tabBar.tintColor = .white
-        if #available(iOS 11.0, *) {
-            tabBar.barTintColor = UIColor(named: "baseColor")
-        } else {
-            // Fallback on earlier versions
-        }
+        tabBar.tintColor = UIColor.oramaWhite
+        tabBar.barTintColor = UIColor.oramaGreen
         
         let investmentViewController = FundInvestmentsViewController()
         investmentViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
